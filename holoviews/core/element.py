@@ -248,6 +248,18 @@ class Element2D(Element):
               defining the (left, bottom, right and top) edges.""")
 
 
+class Projection(Element2D):
+    """
+    Projections serve as an Element to represent an underlying
+    base layer and/or coordinate system. Subclasses may use
+    this to specify projections, which will apply to all Elements
+    overlaid on top of the Projection. Examples may include
+    geographic projections or specialized polar projections.
+    """
+
+    group = param.String(default='Projection')
+
+
 class NdElement(NdMapping, Tabular):
     """
     An NdElement is an Element that stores the contained data as

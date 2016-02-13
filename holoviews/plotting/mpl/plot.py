@@ -8,7 +8,7 @@ from matplotlib import gridspec, animation
 import param
 from ...core import (OrderedDict, HoloMap, AdjointLayout, NdLayout,
                      GridSpace, Element, CompositeOverlay, Element3D,
-                     Empty, Collator)
+                     Empty, Collator, Projection)
 from ...core.options import Store, Compositor
 from ...core.util import int_to_roman, int_to_alpha, basestring
 from ...core import traversal
@@ -975,16 +975,18 @@ class LayoutPlot(GenericLayoutPlot, CompositePlot):
 
             # Determine projection type for plot
             components = view.traverse(lambda x: x)
-            projs = ['3d' if isinstance(c, Element3D) else
-                     self.lookup_options(c, 'plot').options.get('projection', None)
-                     for c in components]
-            projs = [p for p in projs if p is not None]
-            if len(set(projs)) > 1:
-                raise Exception("A single axis may only be assigned one projection type")
-            elif projs:
-                projections.append(projs[0])
-            else:
-                projections.append(None)
+            proj = '3d'
+            for c in components:
+                proj = self.lookup_options(c, 'plot').options.get('projection', None)
+                if proj:
+                    break
+                elif isinstance(c, Element3D):
+                    proj = '3d'
+                    break
+                elif isinstance(c, Projection):
+                    proj = c.data
+                    break
+            projections.append(proj)
 
             if not create:
                 continue
