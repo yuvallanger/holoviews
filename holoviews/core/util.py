@@ -478,6 +478,16 @@ def unique_iterator(seq):
             yield item
 
 
+def isnumeric(val):
+    if isinstance(val, (basestring, bool, np.bool_)):
+        return False
+    try:
+        float(val)
+        return True
+    except:
+        return False
+
+
 def unique_array(arr):
     """
     Returns an array of unique values in the input order
