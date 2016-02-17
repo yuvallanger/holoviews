@@ -253,7 +253,6 @@ class ElementPlot(GenericElementPlot, MPLPlot):
             if self.invert_yaxis or any(p.invert_yaxis for p in subplots):
                 t, b = b, t
             if not (b is None and t is None) and not b == t:
-                print b
                 axis.set_ylim((b, t))
 
 
