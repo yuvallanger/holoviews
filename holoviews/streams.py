@@ -550,6 +550,19 @@ class Selection1D(LinkedStream):
         Indices into a 1D datastructure.""")
 
 
+class Reset(LinkedStream):
+    """
+    A stream signalling when a plot reset event has been triggered.
+    """
+
+    reset = param.Boolean(default=False, doc="""
+        Whether a reset event is being signalled.""")
+
+    def __init__(self, *args, **params):
+        super(Reset, self).__init__(self, *args, **dict(params, transient=True))
+
+
+
 class ParamValues(Stream):
     """
     A Stream based on the parameter values of some other parameterized
@@ -612,3 +625,4 @@ class PositionXY(PointerXY):
     def __init__(self, **params):
         self.warning('PositionXY stream deprecated: use PointerXY instead')
         super(PositionXY, self).__init__(**params)
+
