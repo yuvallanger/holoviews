@@ -81,6 +81,9 @@ These guides provide detail about specific additional features in HoloViews:
 * `Plotting with plotly <Plotting_with_Plotly.html>`_
    Styling options and unique plotly features, focusing on 3D plotting.
 
+* `Working with Streaming Data <Working_with_Streaming_Data.html>`_
+   Demonstrates how to leverage the streamz library with HoloViews to work with streaming datasets.
+
 * `Working with renderers and plots <Plots_and_Renderers.html>`_
    Using the ``Renderer`` and ``Plot`` classes for access to the plotting machinery.
 
@@ -116,6 +119,7 @@ These guides provide detail about specific additional features in HoloViews:
     Deploying Bokeh Apps <Deploying_Bokeh_Apps>
     Plotting with matplotlib <Plotting_with_Matplotlib>
     Plotting with plotly <Plotting_with_Plotly>
+    Working with Streaming Data <Working_with_Streaming_Data>
     Working with Plot and Renderers <Plots_and_Renderers>
     Exporting and Archiving <Exporting_and_Archiving>
     Continuous Coordinates <Continuous_Coordinates>
